@@ -26,7 +26,7 @@ public class phoneApp {
         		switch(menu) {
         		case 1:
         			System.out.println("<1.리스트>");
-        			List<PhoneVo> phoneList = phoneDao.getPhoneList();
+        			List<PhoneVo> phoneList = phoneDao.getPhoneList("");
         			for(PhoneVo list: phoneList) {
         				System.out.println(list.getPersonId() + "\t" + list.getName() + "\t" + list.getHp() + 
         						"\t" + list.getCompany());
@@ -68,7 +68,7 @@ public class phoneApp {
                		System.out.println("<5.검색>");
                		System.out.print(">검색어: ");
                		String str = sc.next();
-               		List<PhoneVo> searchList = phoneDao.getPhoneList();
+               		List<PhoneVo> searchList = phoneDao.getPhoneList(str);
                		for(PhoneVo list: searchList) {
                			if(list.getName().contains(str) || list.getHp().contains(str) || list.getCompany().contains(str)) {
                				System.out.println(list.getPersonId() + "\t" + list.getName() + "\t" + list.getHp() + 
