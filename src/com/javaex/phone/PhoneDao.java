@@ -73,7 +73,7 @@ public class PhoneDao {
 			int count = pstmt.executeUpdate();		//insert, update, delete
 		    
 		    // 4.결과처리
-			System.out.println(count + "건 처리되었습니다.");
+			System.out.println("[" + count + "건 등록되었습니다.]");
 
 		} catch (SQLException e) {
 		    System.out.println("error:" + e);
@@ -107,7 +107,7 @@ public class PhoneDao {
 			int count = pstmt.executeUpdate();		//insert, update, delete
 		    
 		    // 4.결과처리
-			System.out.println(count + "건 처리되었습니다.");
+			System.out.println("[" + count + "건 수정되었습니다.]");
 
 		} catch (SQLException e) {
 		    System.out.println("error:" + e);
@@ -135,7 +135,7 @@ public class PhoneDao {
 			int count = pstmt.executeUpdate();		//insert, update, delete
 		    
 		    // 4.결과처리
-			System.out.println(count + "건 처리되었습니다.");
+			System.out.println("[" + count + "건 삭제되었습니다.]");
 
 		} catch (SQLException e) {
 		    System.out.println("error:" + e);
@@ -181,44 +181,40 @@ public class PhoneDao {
 	}
 	
 	//검색
-	public List<PhoneVo> searchPhoneList() {
-		List<PhoneVo> phoneList = new ArrayList<PhoneVo>();
-		try {
-			//db연결
-			getConnect();
-			
-		    // 3. SQL문 준비 / 바인딩 / 실행
-			String quary = "";
-			quary += "select * ";
-			quary += "from person ";
-			pstmt = conn.prepareStatement(quary);
-			
-			rs = pstmt.executeQuery();
-			
-			Scanner sc = new Scanner(System.in);
-			System.out.print(">검색어: ");
-			String str = sc.nextLine();
-			System.out.println(str);
-			
-			while(rs.next()) {
-				int personId = rs.getInt("person_id");
-				String name = rs.getString("name");
-				String hp = rs.getString("hp");
-				String company = rs.getString("company");
-				if(name.contains(str) || hp.contains(str) || company.contains(str)) {
-					PhoneVo phoneVo = new PhoneVo(personId, name, hp, company);
-					phoneList.add(phoneVo);
-				}
-			} 
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		}
-		//자원정리
-		
-		closeAll();
-		
-		return phoneList;
-		
-	}
+//	public List<PhoneVo> searchPhoneList() {
+//		List<PhoneVo> phoneList = new ArrayList<PhoneVo>();
+//		try {
+//			//db연결
+//			getConnect();
+//			
+//		    // 3. SQL문 준비 / 바인딩 / 실행
+//			String quary = "";
+//			quary += "select * ";
+//			quary += "from person ";
+//			pstmt = conn.prepareStatement(quary);
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				int personId = rs.getInt("person_id");
+//				String name = rs.getString("name");
+//				String hp = rs.getString("hp");
+//				String company = rs.getString("company");
+//				if(name.contains(str) || hp.contains(str) || company.contains(str)) {
+//					PhoneVo phoneVo = new PhoneVo(personId, name, hp, company);
+//					phoneList.add(phoneVo);
+//				}
+//			}
+//		} catch (SQLException e) {
+//		    System.out.println("error:" + e);
+//		}
+//		//자원정리
+//		
+//		closeAll();
+//		
+//		return phoneList;
+//		
+//	}
+
 
 }

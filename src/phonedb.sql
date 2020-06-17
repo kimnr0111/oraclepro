@@ -31,11 +31,11 @@ from person;
 
 --update문
 update person
-set name = '이효리',
-hp = '010-1111-1111',
-company = '02-1111-1111'
-where person_id = 1;
+set name = '이정재',
+hp = '010-9999-9999',
+company = '02-9999-9999'
+where person_id = 4;
 
 --delete문
 delete from person
-where person_id = 1;
+where person_id = 5;

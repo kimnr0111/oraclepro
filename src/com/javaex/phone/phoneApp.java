@@ -33,48 +33,47 @@ public class phoneApp {
         			}
         			break;
         		case 2:
-        			sc.nextLine();
         			System.out.println("<2.등록>");
                		System.out.print(">이름: ");
-               		String inName = sc.nextLine();
+               		String inName = sc.next();
                		System.out.print(">휴대전화: ");
-               		String inHp = sc.nextLine();
+               		String inHp = sc.next();
                		System.out.print(">회사전화: ");
-               		String inCompany = sc.nextLine();
+               		String inCompany = sc.next();
                		PhoneVo insert = new PhoneVo(inName, inHp, inCompany);
             		phoneDao.phoneInsert(insert);
             		System.out.println("[등록되었습니다.]");
             		break;
         		case 3:
-        			sc.nextLine();
                		System.out.println("<3.수정>");
                		System.out.print(">번호: ");
                		int upId = sc.nextInt();
-               		sc.nextLine();
                		System.out.print(">이름: ");
-               		String upName = sc.nextLine();
+               		String upName = sc.next();
                		System.out.print(">휴대전화: ");
-               		String upHp = sc.nextLine();
+               		String upHp = sc.next();
                		System.out.print(">회사전화: ");
-               		String upCompany = sc.nextLine();
+               		String upCompany = sc.next();
                		PhoneVo update = new PhoneVo(upId, upName, upHp, upCompany);
                		phoneDao.phoneUpdate(update);
         			break;
         		case 4:
-        			sc.nextLine();
                		System.out.println("<4.삭제>");
                		System.out.print(">번호: ");
                		int Id = sc.nextInt();
-               		sc.nextLine();
                		PhoneVo delete = new PhoneVo(Id);
                		phoneDao.phoneDelete(delete);
         			break;
         		case 5:
                		System.out.println("<5.검색>");
-               		List<PhoneVo> PhoneList2 = phoneDao.searchPhoneList();
-               		for(PhoneVo list: PhoneList2) {
-               			System.out.println(list.getPersonId() + "\t" + list.getName() + "\t" + list.getHp() + 
-        						"\t" + list.getCompany());
+               		System.out.print(">검색어: ");
+               		String str = sc.next();
+               		List<PhoneVo> searchList = phoneDao.getPhoneList();
+               		for(PhoneVo list: searchList) {
+               			if(list.getName().contains(str) || list.getHp().contains(str) || list.getCompany().contains(str)) {
+               				System.out.println(list.getPersonId() + "\t" + list.getName() + "\t" + list.getHp() + 
+            						"\t" + list.getCompany());
+               			}
                		}
         			break;
         		case 6:
