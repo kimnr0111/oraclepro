@@ -70,10 +70,9 @@ public class phoneApp {
                		String str = sc.next();
                		List<PhoneVo> searchList = phoneDao.getPhoneList(str);
                		for(PhoneVo list: searchList) {
-               			if(list.getName().contains(str) || list.getHp().contains(str) || list.getCompany().contains(str)) {
                				System.out.println(list.getPersonId() + "\t" + list.getName() + "\t" + list.getHp() + 
             						"\t" + list.getCompany());
-               			}
+               			
                		}
         			break;
         		case 6:
